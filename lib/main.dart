@@ -26,8 +26,46 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var player1 = 0.5;
+  var player2 = 0.5;
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: Colors.amber,
+        child: Column(
+          children: [
+            GestureDetector(
+              child: Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * player1,
+                color: Colors.blue,
+              ),
+              onTap: () {
+                setState(() {
+                  player1 += 0.1;
+                  player2 -= 0.1;
+                });
+              },
+            ),
+            GestureDetector(
+              child: Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * player2,
+                color: Colors.red,
+              ),
+              onTap: () {
+                setState(() {
+                  player2 += 0.1;
+                  player1 -= 0.1;
+                });
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
